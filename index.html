@@ -3,67 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>세종테크 - POS & KIOSK 전문 기업</title>
+    <title>Link21 Style - 나만의 시작페이지 & 세종테크</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Sans KR', sans-serif; color: #333; line-height: 1.6; background-color: #fff; }
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #334155; line-height: 1.5; }
         
         /* 상단 헤더 */
-        header { background: #1a252f; color: white; padding: 50px 20px; text-align: center; }
-        header h1 { font-size: 2.2rem; margin-bottom: 10px; }
-        header p { font-size: 1.1rem; color: #cbd5e1; }
+        header { background: #1e293b; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: bold; color: #38bdf8; text-decoration: none; }
+        .logo span { color: #fff; }
         
         /* 메인 컨테이너 */
-        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; text-align: center; }
-        .section-title { font-size: 1.8rem; margin-bottom: 40px; color: #1e293b; }
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
         
-        /* 카드 영역 (가로 정렬) */
-        .card-container { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
-        .card { 
-            background: #fff; 
-            border: 1px solid #e2e8f0; 
-            border-radius: 12px; 
-            padding: 30px 20px; 
-            flex: 1; 
-            min-width: 250px; 
-            max-width: 300px; 
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s;
-        }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { font-size: 1.3rem; margin-bottom: 15px; color: #0f172a; }
-        .card p { color: #64748b; font-size: 0.95rem; word-break: keep-all; }
-        
-        /* 하단 푸터 */
-        footer { background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 30px 20px; text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 40px; }
+        /* 검색창 섹션 */
+        .search-section { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 25px; text-align: center; }
+        .search-box { display: flex; max-width: 600px; margin: 0 auto; gap: 8px; }
+        .search-box input { flex: 1; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; outline: none; }
+        .search-box input:focus { border-color: #38bdf8; }
+        .search-box button { padding: 12px 24px; background: #0284c7; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+
+        /* 자주 찾는 사이트 (아이콘 그리드) */
+        .quick-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 12px; margin-bottom: 30px; }
+        .quick-item { background: #fff; padding: 15px 10px; border-radius: 10px; text-align: center; text-decoration: none; color: #1e293b; font-weight: 600; font-size: 0.9rem; border: 1px solid #e2e8f0; transition: all 0.2s; }
+        .quick-item:hover { transform: translateY(-3px); border-color: #0284c7; color: #0284c7; }
+        .quick-icon { font-size: 1.5rem; display: block; margin-bottom: 5px; }
+
+        /* 2열 레이아웃 (메인 콘텐츠 + 사이드바) */
+        .main-layout { display: flex; gap: 25px; flex-wrap: wrap; }
+        .content-area { flex: 3; min-width: 300px; }
+        .sidebar { flex: 1; min-width: 260px; }
+
+        /* 카테고리 섹션 */
+        .category-card { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid #e2e8f0; }
+        .category-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 15px; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+        .link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; }
+        .link-btn { display: block; padding: 8px 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #475569; font-size: 0.85rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .link-btn:hover { background: #e0f2fe; color: #0369a1; border-color: #7dd3fc; }
+
+        /* 사이드바 배너 및 세종테크 핫라인 */
+        .banner-box { background: linear-gradient(135deg, #1e293b, #0f172a); color: white; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 20px; }
+        .banner-box h3 { color: #38bdf8; margin-bottom: 8px; font-size: 1.2rem; }
+        .banner-box p { font-size: 0.9rem; color: #94a3b8; margin-bottom: 15px; }
+        .banner-btn { display: inline-block; padding: 10px 20px; background: #0284c7; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 0.9rem; }
+
+        footer { text-align: center; padding: 30px 20px; color: #94a3b8; font-size: 0.85rem; border-top: 1px solid #e2e8f0; margin-top: 40px; }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>세종테크</h1>
-        <p>POS, 카드 단말기 & 키오스크 맞춤 설치 전문</p>
+        <a href="#" class="logo">LINK<span>21</span></a>
+        <div style="font-size: 0.9rem; color: #cbd5e1;">나만의 매장 포털 시작페이지</div>
     </header>
 
     <div class="container">
-        <h2 class="section-title">주요 서비스</h2>
-        <div class="card-container">
-            <div class="card">
-                <h3>POS 시스템</h3>
-                <p>매장 맞춤형 신속하고 안정적인 POS 설치 및 유지보수</p>
-            </div>
-            <div class="card">
-                <h3>카드 단말기</h3>
-                <p>유/무선 단말기 빠른 승인 및 매장 맞춤 세팅</p>
-            </div>
-            <div class="card">
-                <h3>무인 키오스크</h3>
-                <p>무인 매장, 카페, 식당 최적화 키오스크 솔루션</p>
-            </div>
+        <!-- 구글/네이버 통합 검색 -->
+        <div class="search-section">
+            <form action="https://www.google.com/search" method="get" target="_blank" class="search-box">
+                <input type="text" name="q" placeholder="구글 검색어를 입력하세요..." required>
+                <button type="submit">검색</button>
+            </form>
         </div>
-    </div>
 
-    <footer>
-        <p>© 세종테크. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+        <!-- 자주 찾는 서비스 바로가기 -->
+        <div class="quick-links">
+            <a href="https://www.naver.com" target="_blank" class="quick-item"><span class="quick-icon">🇳</span>네이버</a>
+            <a href="https://www.google.com" target="_blank" class="quick-item"><span class="quick-icon">🔍</span>구글</a>
+            <a href="https://www.youtube.com" target="_blank" class="quick-item"><span class="quick-icon">▶️</span>유튜브</a>
+            <a href="https://www.hometax.go.kr" target="_blank" class="quick-item"><span class="quick-icon">🏢</span>홈택스</a>
+            <a href="https://map.naver.com" target="_blank" class="quick-item"><span class="quick-icon">🗺️</span>지도</a>
+            <a href="https://www.coupang.com" target="_blank" class="quick-item"><span class="quick-icon">🛒</span>쿠팡</a>
+        </div>
+
+        <div class="main-layout">
+            <!-- 메인 링크 모음 -->
+            <div class="content-area">
+                <!-- 1. 포털 / 검색 -->
+                <div class="category-card">
+                    <div class="category-title">📌 필수 포털 & 검색</div>
+                    <div class="link-grid">
+                        <a href="https://www.naver.com" target="_blank" class="link-btn">네이버</a>
+                        <a href="https://www.google.co.kr" target="_blank" class="link-btn">구글</a>
+                        <a href="https://www.daum.net" target="_blank" class="link-btn">다음</a>
+                        <a href="https://www.bing.com" target="_blank" class="link-btn">Bing</a>
+                        <a href="https://chatgpt.com" target="_blank" class="link-btn">ChatGPT</a>
+                        <a href="https://gemini.google.com" target="_blank" class="link-btn">Gemini</a>
+                    </div>
+                </div>
+
+                <!-- 2. 매장 / 업무 필수 사이트 -->
+                <div class="category-card">
+                    <div class="category-title">💼 매장 운영 & 세무 업무</div>
+                    <div class="link-grid">
+                        <a href="https://www.hometax.go.kr" target="_blank" class="link-btn">국세청 홈택스</a>
+                        <a href="https://www.gov.kr" target="_blank" class="link-btn">정부24</a>
+                        <a href="https://www.cardpoint.or.kr" target="_blank" class="link-btn">카드매출조회</a>
+                        <a href="https://baemin.com" target="_blank" class="link-btn">배달의민족</a>
+                        <a href="https://www.yogiyo.co.kr" target="_blank" class="link-btn">요기요</a>
+                        <a href="https://boss.coupangeats.com" target="_blank" class="link-btn">쿠팡이츠 사장님</a>
+                    </div>
+                </div>
+
+                <!-- 3. 뉴스 & 커뮤니티 -->
+                <div class="category-card">
+                    <div class="category-title">📰 뉴스 & 라이프</div>
+                    <div class="link-grid">
+                        <a href="https://news.naver.com" target="_blank" class="link-btn">네이버 뉴스</a>
+                        <a href="https://news.google.com" target="_blank" class="link-btn">구글 뉴스</a>
+                        <a href="https://www.dcinside.com" target="_blank" class="link-btn">디시인사이드</a>
+                        <a href="https://www.youtube.com" target="_blank" class="link-btn">유튜브</a>
+                        <a href="https://weather.naver.com" target="_blank" class="link-btn">네이버 날씨</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 오른쪽 사이드바 (광고/영업) -->
+            <div class="sidebar">
+                <!-- 세종테크 홍보 배너 -->
+                <div class="banner-box">
+                    <h3>세종테크 POS/키오스크</h3>
+                    <p>POS, 카드단말기, 무인키오스크<br>신속 설치 및 24시간 AS</p>
+                    <a href="tel:010-0000-0000" class="banner-btn">📞 설치/장애 문의</a>
+                </div>
+
+                <!-- 추가 제휴 배너 예시 -->
+                <div class="category-card" style="text-align: center;">
+                    <div class="category-title">🛒 추천 쇼핑몰</div>
+                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">필요한 물품 빠르게 찾기</p>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <a href="https://www.coupang.com" target="_blank" class="link-btn" style="background: #fee2e2; color: #dc2626; border: none;">쿠팡 바로가
